@@ -2,25 +2,25 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Independent reading platform',
+    tagline: 'Trusted local business directory',
   },
   footer: {
-    tagline: 'Stories, resources, and discoverable posts',
+    tagline: 'Verified businesses and local services',
   },
   hero: {
-    badge: 'Latest stories and visuals',
-    title: ['A thoughtful home for', 'stories, visuals, and discovery.'],
+    badge: 'Verified local businesses',
+    title: ['Find trusted services', 'in your city.'],
     description:
-      'Explore fresh articles, image-led posts, and discoverable content across the platform through a calmer and clearer browsing experience.',
+      'Search trusted local businesses, compare services, and connect faster with verified providers.',
     primaryCta: {
-      label: 'Read latest stories',
-      href: '/articles',
+      label: 'Explore listings',
+      href: '/listings',
     },
     secondaryCta: {
-      label: 'Explore visuals',
-      href: '/images',
+      label: 'Create listing',
+      href: '/register',
     },
-    searchPlaceholder: 'Search stories, visuals, listings, and more',
+    searchPlaceholder: 'Search businesses, services, categories, locations',
     focusLabel: 'Focus',
     featureCardBadge: 'latest cover rotation',
     featureCardTitle: 'Latest posts shape the visual identity of the homepage.',
@@ -29,42 +29,42 @@ export const siteContent = {
   },
   home: {
     metadata: {
-      title: 'Stories, visuals, and discoverable content',
+      title: 'Business listings and local services',
       description:
-        'Explore articles, images, listings, and curated posts through a cleaner reading-first experience.',
-      openGraphTitle: 'Stories, visuals, and discoverable content',
+        'Find verified local businesses and compare trusted service providers with fast, clear listing cards.',
+      openGraphTitle: 'Business listings and local services',
       openGraphDescription:
-        'Discover articles, visual posts, and connected content through a calmer reading-first experience.',
-      keywords: ['story platform', 'article site', 'visual content', 'content discovery'],
+        'Search trusted local listings, filter by category, and contact businesses quickly.',
+      keywords: ['business listings', 'local services', 'business directory', 'verified businesses'],
     },
     introBadge: 'About the platform',
-    introTitle: 'Built for reading, browsing, and connecting different kinds of content.',
+    introTitle: 'Built for business discovery with less noise and more trust.',
     introParagraphs: [
-      'This site brings together article-style reading, visual browsing, and structured discovery so visitors can move naturally between different content types.',
-      'Instead of separating stories, visuals, and supporting resources into disconnected surfaces, the platform keeps them connected in one place with consistent navigation and easier exploration.',
-      'Whether someone starts with a story, an image-led post, a listing, or a resource page, they can keep discovering related content without friction.',
+      'This platform is focused on local business listings only, so users can compare services quickly without jumping across unrelated content formats.',
+      'Every listing surface is structured for trust: clearer contact details, service highlights, and location-first discovery patterns.',
+      'From the homepage to listing pages, the experience is optimized for finding businesses and taking action fast.',
     ],
     sideBadge: 'At a glance',
     sidePoints: [
-      'Reading-first homepage with stronger emphasis on stories and imagery.',
-      'Connected sections for articles, visuals, listings, and supporting resources.',
-      'Cleaner browsing rhythm designed to make exploration feel easier.',
-      'Lightweight interactions that keep the experience fast and readable.',
+      'Business-listing-first homepage and navigation.',
+      'Verified profiles and action-focused listing cards.',
+      'Cleaner filters for location and service type.',
+      'Fast interactions designed for quick decision making.',
     ],
     primaryLink: {
-      label: 'Browse articles',
-      href: '/articles',
+      label: 'Browse listings',
+      href: '/listings',
     },
     secondaryLink: {
-      label: 'See visuals',
-      href: '/images',
+      label: 'Create account',
+      href: '/register',
     },
   },
   cta: {
     badge: 'Start exploring',
-    title: 'Explore articles, visuals, and resources through one connected experience.',
+    title: 'Explore trusted local businesses through one clear directory experience.',
     description:
-      'Move between articles, image-led posts, listings, and resources through one clearer and more connected visual system.',
+      'Use simple category and location filters to discover verified listings and connect with the right provider faster.',
     primaryCta: {
       label: 'Get Started Free',
       href: '/register',
@@ -84,8 +84,8 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
     description: 'Read articles, stories, guides, and long-form posts across topics and interests.',
   },
   listing: {
-    title: 'Listings and discoverable pages',
-    description: 'Explore listings, services, brands, and structured pages organized for easier browsing.',
+    title: 'Business listings and local services',
+    description: 'Explore verified listings, compare services, and discover trusted local businesses.',
   },
   classified: {
     title: 'Classifieds and announcements',
@@ -114,16 +114,16 @@ export const taskIntroCopy: Record<
   { title: string; paragraphs: string[]; links: { label: string; href: string }[] }
 > = {
   listing: {
-    title: 'Listings, services, and structured pages',
+    title: 'Business listings, services, and trusted providers',
     paragraphs: [
-      'Explore listings, services, brands, and discoverable pages across categories. Each entry is organized to make browsing clearer and help visitors quickly understand what a post offers.',
-      'Listings connect naturally with articles, images, resources, and other content types so supporting information stays easy to reach from the same platform.',
-      'Browse by category to compare posts in context, discover related content, and move between formats without losing your place.',
+      'Explore local listings across categories. Each business profile is organized to help visitors understand services quickly and compare with confidence.',
+      'Directory cards highlight the details people need most: location, service focus, trust cues, and clear calls to action.',
+      'Browse by category and find verified providers without distraction from unrelated content sections.',
     ],
     links: [
-      { label: 'Read articles', href: '/articles' },
-      { label: 'Explore classifieds', href: '/classifieds' },
-      { label: 'View profiles', href: '/profile' },
+      { label: 'Explore listings', href: '/listings' },
+      { label: 'Create account', href: '/register' },
+      { label: 'Contact support', href: '/contact' },
     ],
   },
   article: {
