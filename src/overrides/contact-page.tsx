@@ -1,6 +1,8 @@
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 
+const CONTACT_EMAIL = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'contact@starcoworkers.com'
+
 export const CONTACT_PAGE_OVERRIDE_ENABLED = true
 
 export function ContactPageOverride() {
@@ -43,6 +45,16 @@ export function ContactPageOverride() {
                 Submit request
               </button>
             </form>
+
+            <div className="mt-6 pt-6 border-t border-[#d4e2d6]">
+              <p className="text-sm font-medium text-[#173723] mb-3">Or email us directly:</p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="inline-flex h-12 items-center justify-center rounded-full border-2 border-[#123f26] bg-transparent px-6 text-sm font-semibold text-[#123f26] transition hover:bg-[#123f26] hover:text-white"
+              >
+                📧 {CONTACT_EMAIL}
+              </a>
+            </div>
           </div>
         </section>
       </main>

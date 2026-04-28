@@ -11,7 +11,6 @@ export const NAVBAR_OVERRIDE_ENABLED = true
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Business Listings', href: '/listings' },
   { label: 'Search', href: '/search' },
   { label: 'Legal', href: '/legal' },
   { label: 'Contact', href: '/contact' },
