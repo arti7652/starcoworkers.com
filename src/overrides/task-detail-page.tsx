@@ -9,6 +9,8 @@ import { buildPostUrl, fetchTaskPostBySlug, fetchTaskPosts } from '@/lib/task-da
 import { SITE_CONFIG, getTaskConfig, type TaskKey } from '@/lib/site-config'
 import type { SitePost } from '@/lib/site-connector'
 import { ListingActionBar } from '@/components/tasks/listing-action-bar'
+import { RichContent, formatRichHtml } from '@/components/shared/rich-content'
+import { ImageGallery } from '@/components/shared/image-gallery'
 
 type PostContent = {
   category?: string
@@ -117,6 +119,8 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
     post.summary ||
     'Business profile details and service overview are available below.'
   const readableDescription = htmlToPlainText(description)
+  const descriptionHtml = formatRichHtml(description, 'Business profile details and service overview are available below.')
+  const bodyHtml = formatRichHtml(content.body || '', '')
   const mapEmbedUrl = buildMapEmbedUrl(content.latitude, content.longitude, location)
   const detailUrl = `${SITE_CONFIG.baseUrl.replace(/\/$/, '')}${taskConfig?.route || '/listings'}/${post.slug}`
 
@@ -163,7 +167,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               <ListingActionBar title={post.title} url={detailUrl} website={content.website} location={location} />
 
               <div className="space-y-5 overflow-y-auto p-5 sm:p-6">
-                <p className="whitespace-pre-line text-sm leading-7 text-[#3f624a]">{readableDescription}</p>
+                <RichContent html={descriptionHtml} className="text-sm leading-7 text-[#3f624a]" />
 
                 <div className="rounded-2xl border border-[#d4dfd3] bg-white p-4">
                   <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-[#1f6a3c]">
@@ -192,16 +196,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
                 </div>
 
                 {images.length > 1 ? (
-                  <div className="rounded-2xl border border-[#d4dfd3] bg-white p-4">
-                    <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1f6a3c]">Photos</h2>
-                    <div className="mt-3 grid grid-cols-3 gap-2">
-                      {images.slice(1).map((image, idx) => (
-                        <div key={`${image}-${idx}`} className="relative aspect-square overflow-hidden rounded-lg">
-                          <ContentImage src={image} alt={`${post.title} photo ${idx + 2}`} fill className="object-cover" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <ImageGallery images={images} title={post.title} showMainImage={false} />
                 ) : null}
 
                 {content.highlights?.length ? (
@@ -285,10 +280,12 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
 
           <div className="grid gap-8 p-6 lg:grid-cols-[1.25fr_0.75fr] lg:p-8">
             <article>
-              <p className="text-sm leading-8 text-[#3f624a]">{description}</p>
+              <RichContent html={descriptionHtml} className="text-sm leading-8 text-[#3f624a]" />
+              {bodyHtml ? (
               <div className="mt-6 rounded-[1.2rem] border border-[#d2e1d4] bg-[#f9fcf9] p-5">
-                <RichContent html={body} />
+                <RichContent html={bodyHtml} />
               </div>
+              ) : null}
 
               {content.highlights?.length ? (
                 <div className="mt-6 rounded-[1.2rem] border border-[#d2e1d4] bg-[#f9fcf9] p-5">
@@ -351,16 +348,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               </div>
 
               {images.length > 1 ? (
-                <div className="rounded-[1.2rem] border border-[#d2e1d4] bg-[#f9fcf9] p-4">
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#5f7a67]">Gallery</p>
-                  <div className="mt-3 grid grid-cols-3 gap-2">
-                    {images.slice(1, 7).map((image) => (
-                      <div key={image} className="relative aspect-square overflow-hidden rounded-lg">
-                        <ContentImage src={image} alt={`${post.title} gallery`} fill className="object-cover" />
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <ImageGallery images={images} title={post.title} showMainImage={false} />
               ) : null}
             </aside>
           </div>

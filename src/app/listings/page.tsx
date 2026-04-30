@@ -12,7 +12,6 @@ export const revalidate = 3;
 
 export const generateMetadata = () =>
   buildTaskMetadata("listing", {
-    path: "/listings",
     title: taskPageMetadata.listing.title,
     description: taskPageMetadata.listing.description,
   });
@@ -28,11 +27,12 @@ const textMatch = (value: string, query: string) =>
 
 const compactText = (value: unknown) => (typeof value === "string" ? value.trim().toLowerCase() : "");
 
-export default async function ListingsPage({ searchParams }: { searchParams?: ListingsSearchParams }) {
+export default async function ListingsPage({ searchParams }: { searchParams?: Promise<ListingsSearchParams> }) {
+  const params = await searchParams;
   const posts = await fetchTaskPosts("listing", 24, { fresh: true });
-  const query = (searchParams?.q || "").trim().toLowerCase();
-  const location = (searchParams?.location || "").trim().toLowerCase();
-  const activeCategory = (searchParams?.category || "").trim().toLowerCase();
+  const query = (params?.q || "").trim().toLowerCase();
+  const location = (params?.location || "").trim().toLowerCase();
+  const activeCategory = (params?.category || "").trim().toLowerCase();
   const filtered = posts.filter((post) => {
     const content = post.content && typeof post.content === "object" ? post.content : {};
     const category = compactText((content as any).category);
@@ -80,14 +80,14 @@ export default async function ListingsPage({ searchParams }: { searchParams?: Li
                   <Search className="h-4 w-4" />
                   <input
                     name="q"
-                    defaultValue={searchParams?.q || ""}
+                    defaultValue={params?.q || ""}
                     placeholder="Search by service name"
                     className="h-full w-full bg-transparent text-[#1d422b] placeholder:text-[#5f7a67] focus:outline-none"
                   />
                 </div>
                 <input
                   name="location"
-                  defaultValue={searchParams?.location || ""}
+                  defaultValue={params?.location || ""}
                   placeholder="City or ZIP code"
                   className="h-11 rounded-xl border border-[#d4e2d6] bg-[#f7fbf7] px-3 text-sm text-[#1d422b] placeholder:text-[#5f7a67]"
                 />
