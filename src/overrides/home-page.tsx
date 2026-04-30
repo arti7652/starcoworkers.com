@@ -4,7 +4,7 @@ import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { ContentImage } from '@/components/shared/content-image'
 
-export const HOME_PAGE_OVERRIDE_ENABLED = true
+export const HOME_PAGE_OVERRIDE_ENABLED = false
 
 const featuredListings = [
   {
