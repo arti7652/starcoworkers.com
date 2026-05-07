@@ -30,6 +30,16 @@ const nextConfig = {
       { source: '/articles/:slug*', destination: '/article/:slug*', permanent: true },
       { source: '/images', destination: '/image', permanent: true },
       { source: '/images/:slug*', destination: '/image/:slug*', permanent: true },
+      {
+        source: '/users',
+        destination: '/user',
+        permanent: true,
+      },
+      {
+        source: '/users/:slug*',
+        destination: '/user/:slug*',
+        permanent: true,
+      },
     ];
   },
 
@@ -43,6 +53,14 @@ const nextConfig = {
       { source: '/article/:slug*', destination: '/articles/:slug*' },
       { source: '/image', destination: '/images' },
       { source: '/image/:slug*', destination: '/images/:slug*' },
+      {
+        source: '/user',
+        destination: '/profile',
+      },
+      {
+        source: '/user/:slug*',
+        destination: '/profile/:slug*',
+      },
     ];
   },
 
